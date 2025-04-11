@@ -1,0 +1,36 @@
+# Cline Rules for CLI Tools Project
+
+## File Structure
+- /src - Main source files
+- /memory-bank - Project documentation
+- /tests - Unit and integration tests
+- /examples - Sample inputs/outputs
+
+## Documentation Standards
+1. All tools must include:
+   - Usage instructions in README.md
+   - API documentation in docstrings
+   - Memory bank updates after significant changes
+
+## Development Rules
+1. Use Python 3.10+ features
+2. Follow PEP 8 style guide
+3. All new features require:
+   - Unit tests
+   - Documentation
+   - Memory bank updates
+
+## Memory Bank Requirements
+1. Update after:
+   - New features
+   - Architecture changes
+   - Significant bug fixes
+2. Must include:
+   - Context of changes
+   - Technical decisions
+   - Next steps
+
+## Testing Requirements
+1. 80%+ test coverage
+2. Include edge cases
+3. Document test scenarios
