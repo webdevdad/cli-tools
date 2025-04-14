@@ -64,3 +64,4 @@ venv.bak/
 *.log
 *.pot
 *.pyc
+.env
