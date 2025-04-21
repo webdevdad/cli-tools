@@ -1,22 +1,23 @@
 # Product Context
 
-**Why This Project Exists:**
+## Purpose
+The CLI Tools project aims to provide a suite of AI-powered command-line utilities that automate common tasks related to meetings, code documentation, and SQL query building. These tools enhance productivity by leveraging natural language processing and generation capabilities of the OpenAI API.
 
-This project aims to provide efficient and scriptable command-line tools that automate repetitive AI tasks, enhancing developer productivity.
+## Problems It Solves
+- Generates creative, alliterative meeting titles to make meetings more engaging.
+- Converts Java source code into well-structured Markdown documentation, saving manual effort.
+- Builds SQL queries interactively from natural language descriptions, reducing the need for deep SQL expertise.
 
-**Problems It Solves:**
+## How It Should Work
+- Users interact with a unified CLI launcher that presents a menu of available tools.
+- Each tool guides users through an interactive prompt sequence to gather necessary inputs.
+- Tools communicate with the OpenAI API to process inputs and generate outputs.
+- Outputs are presented in the console or saved to files as specified by the user.
+- The system handles API key management securely via environment variables or prompt input.
 
-*   Manual generation of meeting titles.
-*   Manual creation of documentation from code.
-
-**How It Should Work:**
-
-The tools should provide an interactive, conversational experience within the command line. Users will be prompted for necessary inputs, making the tools easier to use without needing to remember specific command-line arguments. The underlying AI interaction should remain consistent and reliable.
-
-**User Experience Goals:**
-
-*   Intuitive, guided conversational flow via terminal prompts.
-*   Clear instructions and feedback during interaction.
-*   Easy input validation and correction.
-*   Well-formatted output presented clearly within the conversation.
-*   Minimal setup required (primarily Python and API key).
+## User Experience Goals
+- Simple, intuitive command-line interface accessible to users with basic technical skills.
+- Clear prompts and validation to minimize user errors.
+- Fast and accurate AI-powered responses.
+- Secure handling of sensitive information.
+- Comprehensive documentation and examples to facilitate adoption.

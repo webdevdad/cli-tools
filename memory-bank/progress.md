@@ -1,43 +1,33 @@
-# Project Progress - CLI Tools
+# Progress
 
-## Version Control
-✔ Git repository initialized (commit bc0ebb5)
-✔ All files committed and tracked
+## What Works
+- CLI tools launcher is fully functional.
+- Alliterative Meeting Title Generator produces creative titles.
+- Code-to-Markdown Documentation Generator creates accurate Markdown from Java source.
+- Interactive SQL Query Builder supports conversational query building.
+- OpenAI API integration is operational with environment variable or prompt input.
+- GitHub repository is clean, secure, and up to date.
 
-## Completed Features
-✅ Alliterative Meeting Title Generator
-- Fully functional interactive CLI
-- Supports custom topics and letters
-- Generates multiple title options
-- Git version controlled
+## What's Left to Build
+- Comprehensive unit and integration tests for all tools.
+- Enhanced error handling and input validation.
+- Additional features and customization options for each tool.
+- Packaging and distribution setup (e.g., PyPI package).
+- Continuous Integration and Deployment pipelines.
+- User documentation with detailed examples and tutorials.
 
-✅ Code-to-Markdown Documentation
-- Processes Java source ZIP files
-- Creates structured Markdown output
-- Handles class documentation and properties
-- Git version controlled
-
-✅ SQL Query Builder
-- Natural language to SQL conversion
-- Safety validation system
-- Interactive refinement
-- Git version controlled
-
-## Documentation Status
-✔ Project brief established
-✔ README updated with structure
-✔ .clinerules created
-✔ Active context maintained
-✔ Git history documented
-
-## Remaining Work
-- Add unit tests for all tools
-- Expand SQL builder documentation
-- Create user guide examples
-- Implement CI/CD pipeline
-- ADK integration planning
+## Current Status
+- Project is in a stable, usable state.
+- Core features are implemented and tested manually.
+- Sensitive data handling and repository hygiene are ensured.
 
 ## Known Issues
-- No test coverage currently
-- Some edge cases not handled in code docs
-- SQL safety could be more robust
+- Some input validation could be improved.
+- SQL Builder requires more robust natural language understanding.
+- Documentation could be expanded for better user onboarding.
+
+## Evolution of Project Decisions
+- Adopted BFG Repo-Cleaner for secret removal.
+- Chose interactive CLI launcher as main user interface.
+- Prioritized security and clean git history.
+- Emphasized modular tool design for extensibility.

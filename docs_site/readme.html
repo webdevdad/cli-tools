@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CLI Tools - README</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      line-height: 1.6;
+      color: #333;
+    }
+    h1, h2, h3 {
+      color: #005a9c;
+    }
+    pre {
+      background: #f4f4f4;
+      padding: 1rem;
+      overflow-x: auto;
+    }
+    code {
+      font-family: monospace;
+      background: #f4f4f4;
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+    }
+    a {
+      color: #005a9c;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>CLI Tools for AI Automation</h1>
+
+  <h2>Updated Documentation Structure</h2>
+  <pre><code>cli_tools/
+├── .clinerules          # Development guidelines
+├── cli_tools_launcher.py # Main entry point
+├── meet_title.py        # Meeting title generator
+├── code_docs.py         # Code documentation tool
+├── sql_builder.py       # SQL query builder
+├── requirements.txt     # Dependencies
+├── README.md            # Project documentation
+└── memory-bank/         # Project knowledge base
+    ├── projectbrief.md
+    ├── productContext.md
+    ├── systemPatterns.md
+    ├── techContext.md
+    ├── progress.md
+    └── activeContext.md
+</code></pre>
+
+  <p>This project provides two command-line tools built with Python to automate specific AI-powered tasks: generating alliterative meeting titles and creating Markdown documentation from Java source code.</p>
+
+  <h2>Tools</h2>
+  <ol>
+    <li><strong>Alliterative Meeting Title Generator (<code>meet_title.py</code>)</strong>: Generates creative, alliterative meeting titles based on a topic and a starting letter.</li>
+    <li><strong>Code-to-Markdown Documentation Generator (<code>code_docs.py</code>)</strong>: Creates technical documentation in Markdown format from Java source code provided in a ZIP file.</li>
+    <li><strong>SQL Query Builder (<code>sql_builder.py</code>)</strong>: Converts natural language to SQL queries with safety checks. <a href="sql_builder_docs.html">See detailed documentation</a>.</li>
+  </ol>
+
+  <h2>Setup</h2>
+  <ol>
+    <li><strong>Clone the repository (if applicable):</strong>
+      <pre><code>git clone <repository_url>
+cd cli_tools
+</code></pre>
+    </li>
+    <li><strong>Install Dependencies:</strong>
+      <p>Ensure you have Python 3 installed. Then, install the required library:</p>
+      <pre><code>pip install -r requirements.txt
+</code></pre>
+      <p><em>(This will install the <code>openai</code> library).</em></p>
+    </li>
+    <li><strong>OpenAI API Key:</strong>
+      <p>These tools require an OpenAI API key to function. You can:</p>
+      <ul>
+        <li>Set it as an environment variable before running:
+          <pre><code>export OPENAI_API_KEY="your_openai_api_key"
+</code></pre>
+        </li>
+        <li>Or enter it when prompted by the launcher</li>
+        <li>Get an API key from <a href="https://platform.openai.com/account/api-keys">OpenAI</a></li>
+      </ul>
+    </li>
+  </ol>
+
+  <h2>Usage</h2>
+  <h3>Unified Launcher (<code>cli_tools_launcher.py</code>)</h3>
+  <p>This menu-driven interface provides access to all tools:</p>
+  <pre><code>python cli_tools_launcher.py
+</code></pre>
+  <p><strong>Main Menu:</strong></p>
+  <ol>
+    <li>Generate Alliterative Meeting Titles</li>
+    <li>Create Markdown Documentation from Java Code</li>
+    <li>Build SQL Queries</li>
+    <li>Exit</li>
+  </ol>
+
+  <h3>Tool Details</h3>
+  <h4>1. Alliterative Meeting Title Generator</h4>
+  <ul>
+    <li>Guides you through creating meeting titles where each word starts with the same letter</li>
+    <li>Interactive workflow:
+      <ol>
+        <li>Enter meeting topic</li>
+        <li>Choose starting letter</li>
+        <li>Select number of words (3 or 4)</li>
+      </ol>
+    </li>
+  </ul>
+
+  <h4>2. Code-to-Markdown Documentation Generator</h4>
+  <ul>
+    <li>Creates technical documentation from Java source code</li>
+    <li>Interactive workflow:
+      <ol>
+        <li>Provide path to ZIP file containing Java code</li>
+        <li>Specify documentation version</li>
+        <li>Choose output destination</li>
+      </ol>
+    </li>
+  </ul>
+
+  <p><strong>Example Output:</strong></p>
+  <pre><code>Data Version: 1.2
+# Com/Example/Events
+
+## UserCreatedEvent
+| Property | Type   | Description          |
+|----------|--------|----------------------|
+| userId   | String | Unique user identifier|
+</code></pre>
+
+  <p><strong>Output (saved to <code>event_docs.md</code>):</strong></p>
+  <pre><code>Data Version: 1.2
+
+# Com/Example/Events
+
+## UserCreatedEvent
+
+Represents an event triggered when a new user is created.
+
+| Property Name | Data Type | Description (from JavaDoc) | Annotations |
+|---------------|-----------|----------------------------|-------------|
+| userId        | String    | The unique identifier for the user. | @NotNull, @JsonProperty("userId") |
+| email         | String    | The email address of the new user. | @NotNull |
+
+## OrderPlacedEvent
+
+Represents an event when an order is successfully placed.
+
+| Property Name | Data Type | Description (from JavaDoc) | Annotations |
+|---------------|-----------|----------------------------|-------------|
+| orderId       | String    | The unique ID for the order. | @NotNull |
+| customerId    | String    | ID of the customer placing the order. | @NotNull |
+| totalAmount   | BigDecimal| The total amount of the order. | N/A |
+</code></pre>
+
+  <p><em>(Note: The exact output depends on the content of your Java files and the AI model's response).</em></p>
+
+  <h2>Contributing</h2>
+  <p>Contributions are welcome! Please follow standard fork-and-pull-request workflows.</p>
+
+  <h2>License</h2>
+  <p>MIT License</p>
+</body>
+</html>

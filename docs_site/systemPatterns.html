@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>System Patterns</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      line-height: 1.6;
+      color: #333;
+    }
+    h1, h2, h3 {
+      color: #005a9c;
+    }
+    ul {
+      margin-left: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>System Patterns</h1>
+
+  <h2>Architecture</h2>
+  <ul>
+    <li>Modular CLI tool design with a unified launcher interface.</li>
+    <li>Each tool encapsulated as a separate Python module/script.</li>
+    <li>Interactive command-line prompts guide user input and workflow.</li>
+    <li>AI integration via OpenAI API for natural language processing and generation.</li>
+  </ul>
+
+  <h2>Key Technical Decisions</h2>
+  <ul>
+    <li>Use of environment variables and .env file for secret management.</li>
+    <li>GitHub repository hygiene enforced with BFG Repo-Cleaner for secret removal.</li>
+    <li>Adoption of PEP 8 style guide for consistent Python code formatting.</li>
+    <li>Use of Homebrew for managing external dependencies on macOS.</li>
+    <li>Markdown as the primary output format for documentation generation.</li>
+  </ul>
+
+  <h2>Design Patterns</h2>
+  <ul>
+    <li>Command pattern implemented via menu-driven CLI launcher.</li>
+    <li>Separation of concerns: each tool handles a distinct AI-powered task.</li>
+    <li>Input validation and error handling embedded in interactive prompts.</li>
+    <li>Use of external AI service abstracted behind Python API calls.</li>
+  </ul>
+
+  <h2>Component Relationships</h2>
+  <ul>
+    <li><code>cli_tools_launcher.py</code> serves as the entry point and dispatcher.</li>
+    <li><code>meet_title.py</code> handles alliterative meeting title generation.</li>
+    <li><code>code_docs.py</code> processes Java source code ZIP files into Markdown docs.</li>
+    <li><code>sql_builder.py</code> provides an interactive SQL query builder with AI assistance.</li>
+    <li>Memory bank files document project context, progress, and technical details.</li>
+  </ul>
+
+  <h2>Critical Implementation Paths</h2>
+  <ol>
+    <li>User launches CLI launcher.</li>
+    <li>User selects desired tool.</li>
+    <li>Tool prompts for necessary inputs.</li>
+    <li>Tool calls OpenAI API with constructed prompts.</li>
+    <li>Tool processes API response and outputs results.</li>
+    <li>User can save or view output as needed.</li>
+  </ol>
+</body>
+</html>

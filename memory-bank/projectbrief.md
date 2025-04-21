@@ -1,13 +1,27 @@
 # Project Brief
 
-**Project Name:** CLI Tools
+## Overview
+The CLI Tools project is designed to deliver a set of AI-powered command-line utilities that streamline and automate tasks related to meeting title generation, code documentation, and SQL query building. By leveraging OpenAI's language models, the project aims to enhance productivity and reduce manual effort in these domains.
 
-**Project Goal:** To create two Python tools that automate specific AI tasks, featuring an interactive conversational command-line interface (UI).
+## Core Requirements
+- Provide a unified CLI launcher to access all tools.
+- Ensure secure handling of API keys and sensitive data.
+- Support interactive, user-friendly command-line workflows.
+- Generate creative and contextually relevant outputs using AI.
+- Maintain clean and secure git repository practices.
+- Include comprehensive documentation and testing.
 
-**Core Requirements:**
+## Goals
+- Develop modular, extensible Python scripts for each tool.
+- Integrate OpenAI API for natural language processing.
+- Implement robust input validation and error handling.
+- Facilitate easy installation and setup via requirements.txt.
+- Document project context, progress, and technical details in memory-bank.
+- Ensure repository hygiene by removing secrets from history.
 
-*   Tool 1: Alliterative Meeting Title Generator (`meet_title.py`) with a conversational UI.
-*   Tool 2: Code-to-Markdown Documentation Generator (`code_docs.py`) with a conversational UI.
-*   Both tools should guide the user through prompts instead of relying solely on command-line arguments.
-
-**Source of Truth:** This document serves as the primary source of truth for the project's scope and requirements.
+## Success Criteria
+- All tools function correctly and produce expected outputs.
+- Users can easily run and interact with the CLI launcher.
+- No sensitive information is exposed in the repository.
+- Documentation is clear, complete, and up to date.
+- Code adheres to best practices and style guidelines.

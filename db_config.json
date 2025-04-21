@@ -1,0 +1,8 @@
+{
+  "postgres": {
+    "uri": "postgresql://testuser:testpass@localhost:5432/testdb"
+  },
+  "sqlite": {
+    "path": "./data/test.db"
+  }
+}

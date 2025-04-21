@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SQL Builder Tool Documentation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      line-height: 1.6;
+      color: #333;
+    }
+    h1, h2, h3 {
+      color: #005a9c;
+    }
+    pre {
+      background: #f4f4f4;
+      padding: 1rem;
+      overflow-x: auto;
+    }
+    code {
+      font-family: monospace;
+      background: #f4f4f4;
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body>
+  <h1>SQL Builder Tool Documentation</h1>
+
+  <h2>Overview</h2>
+  <p>The SQL Builder tool (<code>sql_builder.py</code>) provides a natural language interface for generating SQL queries, inspired by Claude's client patterns. It converts plain English prompts into properly formatted SQL queries with safety checks and explanations.</p>
+
+  <h2>Features</h2>
+  <ul>
+    <li>Natural language to SQL conversion</li>
+    <li>Support for SQLite and PostgreSQL dialects</li>
+    <li>Schema-aware query generation</li>
+    <li>Built-in safety checks</li>
+    <li>Type-safe interfaces using Pydantic</li>
+    <li>Claude-style error handling</li>
+  </ul>
+
+  <h2>Installation</h2>
+  <ol>
+    <li>Ensure dependencies are installed:
+      <pre><code>pip install -r requirements.txt
+</code></pre>
+    </li>
+    <li>Set your Anthropic API key:
+      <pre><code>export ANTHROPIC_API_KEY="your_api_key"
+</code></pre>
+    </li>
+  </ol>
+
+  <h2>Usage</h2>
+  <h3>Command Line</h3>
+  <pre><code>python sql_builder.py
+</code></pre>
+
+  <h3>Programmatic API</h3>
+  <pre><code>from sql_builder import SQLBuilder, SQLMessage
+
+builder = SQLBuilder()
+response = builder.create(
+    SQLMessage(
+        prompt="Find users with duplicate emails",
+        schema="users(id INT, email TEXT)",
+        dialect="postgres"
+    )
+)
+</code></pre>
+
+  <h3>Message Structure</h3>
+  <pre><code>class SQLMessage(BaseModel):
+    prompt: str 
+    schema: Optional[str] = None
+    dialect: Literal['sqlite', 'postgres'] = 'sqlite'
+    safety_check: bool = True
+</code></pre>
+
+  <h3>Response Structure</h3>
+  <pre><code>class SQLResponse(BaseModel):
+    query: str 
+    explanation: str
+    alternatives: list[str]
+    valid: bool
+    safety_rating: conint(ge=0, le=5)
+</code></pre>
+
+  <h2>Examples</h2>
+  <h3>Basic Query</h3>
+  <pre><code>msg = SQLMessage(prompt="Find inactive users last logged in before 2024")
+response = builder.create(msg)
+</code></pre>
+
+  <h3>With Schema</h3>
+  <pre><code>msg = SQLMessage(
+    prompt="Find orders over $100",
+    schema="orders(id INT, amount DECIMAL, customer_id INT)"
+)
+</code></pre>
+
+  <h2>Error Handling</h2>
+  <p>The tool raises <code>SQLBuilderError</code> with:</p>
+  <ul>
+    <li><code>message</code>: Human-readable error</li>
+    <li><code>type</code>: Error category (e.g. "api_error")</li>
+    <li><code>param</code>: Parameter causing the error</li>
+  </ul>
+
+  <h2>Safety Features</h2>
+  <ol>
+    <li>Query validation</li>
+    <li>Injection prevention</li>
+    <li>Permission checks</li>
+    <li>Cost estimation</li>
+  </ol>
+
+  <h2>Integration</h2>
+  <p>The tool is integrated into the main CLI launcher as option 3.</p>
+</body>
+</html>

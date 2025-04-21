@@ -25,10 +25,45 @@ class SQLBuilderError(Exception):
         self.type = type
         self.param = param
 
+import json
+import psycopg2
+import sqlite3
+
 class SQLBuilder:
     def __init__(self):
         self.client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-        
+        # Load DB config
+        with open("db_config.json", "r") as f:
+            self.db_config = json.load(f)
+        self.connection = None
+        self.cursor = None
+
+    def connect_db(self, db_key: str):
+        if db_key not in self.db_config:
+            raise ValueError(f"Database config for '{db_key}' not found.")
+        config = self.db_config[db_key]
+        if db_key == "postgres":
+            self.connection = psycopg2.connect(config["uri"])
+            self.cursor = self.connection.cursor()
+        elif db_key == "sqlite":
+            self.connection = sqlite3.connect(config["path"])
+            self.cursor = self.connection.cursor()
+        else:
+            raise ValueError(f"Unsupported database key: {db_key}")
+
+    def execute_query(self, query: str):
+        if not self.connection or not self.cursor:
+            raise RuntimeError("Database connection is not established.")
+        try:
+            self.cursor.execute(query)
+            if query.strip().upper().startswith("SELECT"):
+                return self.cursor.fetchall()
+            else:
+                self.connection.commit()
+                return None
+        except Exception as e:
+            return f"Query execution error: {str(e)}"
+
     def create(self, message: SQLMessage, conversation_history: list[dict] = None) -> SQLResponse:
         try:
             messages = []
@@ -38,7 +73,7 @@ class SQLBuilder:
                 "role": "user",
                 "content": self._build_prompt(message)
             })
-            
+
             response = self.client.chat.completions.create(
                 model="gpt-4",
                 messages=messages
